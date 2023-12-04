@@ -35,8 +35,10 @@ function getPlayerSelection() {
   while (!inputValidation(playerSelectionInput)) {
     alert("Input must be a valid string");
     playerSelectionInput = prompt("Input again your choice");
+
+    // for exit from loop (with error)
     if (playerSelectionInput === null) {
-      return null;
+      break;
     }
   }
 
@@ -44,8 +46,10 @@ function getPlayerSelection() {
 }
 
 function playRound(playerSelection, computerSelection) {
+  // for info
   console.log("playerSelection", playerSelection);
   console.log("computerSelection", computerSelection);
+
   roundWinner = "";
 
   if (playerSelection === computerSelection) {
@@ -62,6 +66,7 @@ function playRound(playerSelection, computerSelection) {
     return (roundWinner = "computer");
   }
 
+  // if Player win
   console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
   return (roundWinner = "player");
 }
@@ -84,20 +89,27 @@ function game() {
         tieCounter += 1;
         break;
     }
+
+    // for info
     console.log("computerWins", computerWins);
     console.log("playerWins", playerWins);
     console.log("tieCounter", tieCounter);
+
+    // decorator
     if (gamesTotal < 5) {
       console.log("=================== NEXT ROUND ===================");
     }
   }
 
+  // decorator
   console.log("=================== ROUND RESULT ===================");
+
   if (playerWins > computerWins) {
     return console.log(`Player win this game with score ${playerWins}`);
   } else if (playerWins === computerWins) {
     return console.log("It's tie");
   }
+  // if Computer win
   return console.log(`Computer win this game with score ${computerWins}`);
 }
 
