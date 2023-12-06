@@ -17,7 +17,7 @@ const computerScore = document.querySelector(".computer-score span");
 const tieScore = document.querySelector(".tie-score span");
 const roundResult = document.querySelector(".round-winner");
 const gameResult = document.querySelector(".game-winner");
-const vsSpan = document.querySelector(".vs");
+const battlefield = document.querySelector(".battlefield");
 const restartBtn = document.querySelector(".reset");
 
 restartBtn.addEventListener("click", () => location.reload());
@@ -30,8 +30,8 @@ function getComputerChoice() {
 function getPlayerChoice(e) {
   let playerChoice = CHOICES[e.target.id];
   playRound(playerChoice, getComputerChoice());
-  vsSpan.classList.remove("hide");
-  vsSpan.classList.add("show");
+  battlefield.classList.remove("hide");
+  battlefield.classList.add("show");
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -39,6 +39,8 @@ function playRound(playerSelection, computerSelection) {
   computerChoiceText.textContent = computerSelection;
 
   let roundWinner = "";
+  roundResult.classList.remove("hide");
+  roundResult.classList.add("show");
 
   if (playerSelection === computerSelection) {
     roundResult.textContent = "It's draw.";
@@ -68,6 +70,8 @@ function checkWinner() {
       computerWins > playerWins ? "Computer" : "Player"
     } win this round! 
      Press Restart button.`;
+    gameResult.classList.remove("hide");
+    gameResult.classList.add("show");
     gameResult.textContent = message;
     btns.forEach((btn) => (btn.disabled = true));
     btns.forEach((btn) => btn.removeEventListener("click", getPlayerChoice));
