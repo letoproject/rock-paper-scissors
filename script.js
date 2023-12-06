@@ -43,7 +43,7 @@ function playRound(playerSelection, computerSelection) {
   roundResult.classList.add("show");
 
   if (playerSelection === computerSelection) {
-    roundResult.textContent = "It's draw.";
+    roundResult.textContent = "It's tie.";
     roundWinner = "Tie";
     tieScore.textContent = tieCounter += 1;
   } else if (
